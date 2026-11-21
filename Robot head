@@ -1,0 +1,156 @@
+
+#include <Servo.h>
+
+// ---------------- EYE SERVOS ----------------
+
+int lefteye = 10;
+int righteye = 13;
+
+// ---------------- EYELID SERVOS ----------------
+
+int lefteyelid = 11;
+int righteyelid = 12;
+
+// ---------------- EYE POSITIONS ----------------
+
+int lefteyep = 90;
+int righteyep = 90;
+
+// ---------------- EYELID POSITIONS ----------------
+
+int lefteyelidp = 90;
+int righteyelidp = 90;
+
+// ---------------- SERVO OBJECTS ----------------
+
+Servo lefteyeS;
+Servo righteyeS;
+
+Servo lefteyelidS;
+Servo righteyelidS;
+
+// ---------------- VARIABLES ----------------
+
+// Eye servo positions
+int lefteyePosition;
+int righteyePosition = 0;
+
+// Eyelid servo positions
+int lefteyelidPosition = 0;
+int righteyelidPosition = 0;
+
+
+
+// ---------------- SETUP ----------------
+
+void setup() {
+
+  Serial.begin(9600);
+lefteyeS.attach(lefteye);
+righteyeS.attach(righteye);
+
+lefteyelidS.attach(lefteyelid);
+righteyelidS.attach(righteyelid);
+
+
+//comeco 
+
+lefteyeS.write(85);
+righteyeS.write(85);
+
+lefteyelidS.write(110);
+
+righteyelidS.write(95);
+ 
+
+}
+
+// ---------------- MAIN LOOP ----------------
+
+void loop() {
+
+//blink();
+
+//lookleft();
+  // Show commanded positions
+//left eye turing left
+lookleft();
+lookright();
+
+}
+
+// ---------------- LOOK LEFT ----------------
+
+
+void lookleft() {
+
+  for (int i = 85; i<110; i++) {
+
+  lefteyeS.write(i);
+
+  
+
+  righteyeS.write(i);
+
+  delay(50);
+
+}
+}
+
+void lookright() {
+
+    for (int i = 110; i>60; i--) {
+
+  lefteyeS.write(i);
+
+  
+
+  righteyeS.write(i);
+
+  delay(50);
+  }
+
+  for (int i = 60; i <= 85; i++) {
+    lefteyeS.write(i);
+    righteyeS.write(i);
+    delay(50);
+  }
+}
+
+
+
+
+
+  
+
+
+
+ 
+void blink () {
+
+ 
+  lefteyelidS.write(95);
+  
+righteyelidS.write(110);
+
+   delay(1000);
+
+   
+  lefteyelidS.write(150);
+  
+righteyelidS.write(70);
+
+delay(1000);
+
+
+
+   
+
+}
+
+
+
+ 
+
+
+
